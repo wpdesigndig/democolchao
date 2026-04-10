@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sonata Colchões | Conforto que você merece</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FDFAF5;
+    --charcoal: #1C1C1C;
+    --taupe: #8C7B6B;
+    --gold: #C4A96A;
+    --gold-light: #E8D5A3;
+    --soft-gray: #E8E3DA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(253,250,245,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--soft-gray);
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--charcoal);
+    letter-spacing: 0.04em;
+  }
+
+  .logo span { color: var(--gold); }
+
+  nav ul {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  nav ul a {
+    text-decoration: none;
+    color: var(--taupe);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  nav ul a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--charcoal);
+    color: var(--cream) !important;
+    padding: 10px 24px;
+    border-radius: 2px;
+    transition: background 0.3s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold) !important; color: var(--charcoal) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px 80px 80px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-light);
+    color: var(--taupe);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 32px;
+    width: fit-content;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 4vw, 4rem);
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--taupe);
+    margin-bottom: 48px;
+    max-width: 420px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 16px 32px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 2px;
+    transition: all 0.3s;
+    letter-spacing: 0.03em;
+  }
+
+  .btn-primary:hover { background: var(--gold); color: var(--charcoal); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--soft-gray);
+    color: var(--charcoal);
+    padding: 16px 32px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-image {
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-image-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #E8DDD0 0%, #C8B89A 100%);
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .hero-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(253,250,245,0.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--charcoal);
+    padding: 32px 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .stat-item {
+    text-align: center;
+    color: var(--cream);
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-top: 4px;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* SECTION COMMONS */
+  section { padding: 100px 80px; }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 32px;
+    height: 1.5px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    line-height: 1.2;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--taupe);
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 64px;
+  }
+
+  /* PRODUTOS */
+  #produtos { background: var(--warm-white); }
+
+  .produtos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2px;
+  }
+
+  .produto-card {
+    background: var(--cream);
+    padding: 40px 36px;
+    position: relative;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .produto-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 3px;
+    width: 0;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+
+  .produto-card:hover::before { width: 100%; }
+
+  .produto-card:hover {
+    background: var(--charcoal);
+    transform: translateY(-4px);
+  }
+
+  .produto-card:hover .produto-nome,
+  .produto-card:hover .produto-desc,
+  .produto-card:hover .produto-icon { color: var(--cream); }
+
+  .produto-card:hover .preco-vista { color: var(--gold); }
+  .produto-card:hover .preco-parcelado { color: rgba(255,255,255,0.6); }
+  .produto-card:hover .badge-popular { background: var(--gold); color: var(--charcoal); }
+  .produto-card:hover .btn-produto { background: var(--gold); color: var(--charcoal); }
+
+  .badge-popular {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: var(--charcoal);
+    color: var(--cream);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-weight: 500;
+    transition: all 0.4s;
+  }
+
+  .produto-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: block;
+    color: var(--taupe);
+    transition: color 0.4s;
+  }
+
+  .produto-nome {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    transition: color 0.4s;
+  }
+
+  .produto-desc {
+    font-size: 0.875rem;
+    color: var(--taupe);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    transition: color 0.4s;
+    min-height: 56px;
+  }
+
+  .produto-precos {
+    margin-bottom: 24px;
+  }
+
+  .preco-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 4px;
+    transition: color 0.4s;
+  }
+
+  .preco-vista {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--charcoal);
+    font-weight: 700;
+    transition: color 0.4s;
+    line-height: 1;
+  }
+
+  .preco-parcelado {
+    font-size: 0.8rem;
+    color: var(--taupe);
+    margin-top: 6px;
+    transition: color 0.4s;
+  }
+
+  .btn-produto {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 12px 24px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.4s;
+    text-decoration: none;
+  }
+
+  /* DIFERENCIAIS */
+  #diferenciais { background: var(--cream); }
+
+  .diferenciais-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+
+  .diferencial-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .diferencial-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--gold-light);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+
+  .diferencial-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--charcoal);
+  }
+
+  .diferencial-texto {
+    font-size: 0.9rem;
+    color: var(--taupe);
+    line-height: 1.7;
+  }
+
+  /* PARCELAMENTO */
+  .parcelamento-banner {
+    background: linear-gradient(135deg, var(--charcoal) 0%, #2C2420 100%);
+    padding: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .parcelamento-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .parcelamento-text h2 em { color: var(--gold); font-style: italic; }
+
+  .parcelamento-text p {
+    color: var(--taupe);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 420px;
+  }
+
+  .parcelamento-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .parcelamento-cta .btn-primary {
+    background: var(--gold);
+    color: var(--charcoal);
+    font-size: 1rem;
+    padding: 18px 40px;
+  }
+
+  .parcelamento-cta .btn-primary:hover { background: var(--cream); }
+
+  .parcelamento-cta small {
+    color: var(--taupe);
+    font-size: 0.78rem;
+  }
+
+  /* CONTATO */
+  #contato { background: var(--warm-white); }
+
+  .contato-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .contato-info { display: flex; flex-direction: column; gap: 32px; }
+
+  .contato-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .contato-item-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--cream);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .contato-item-text h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+
+  .contato-item-text p {
+    font-size: 0.9rem;
+    color: var(--taupe);
+    line-height: 1.5;
+  }
+
+  .whatsapp-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #25D366;
+    color: white;
+    padding: 18px 36px;
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    width: fit-content;
+  }
+
+  .whatsapp-btn:hover { background: #1EB85A; transform: translateY(-2px); }
+
+  .contato-visual {
+    background: var(--cream);
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    text-align: center;
+    min-height: 400px;
+  }
+
+  .contato-visual .big-emoji { font-size: 5rem; }
+
+  .contato-visual h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--charcoal);
+  }
+
+  .contato-visual p {
+    color: var(--taupe);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 280px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    padding: 48px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--cream);
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  footer p {
+    color: var(--taupe);
+    font-size: 0.85rem;
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-image { min-height: 300px; }
+    .hero-text { padding: 40px 24px; }
+    .stats-bar { padding: 32px 24px; flex-wrap: wrap; }
+    .stat-divider { display: none; }
+    section { padding: 64px 24px; }
+    .produtos-header { flex-direction: column; }
+    .diferenciais-grid { grid-template-columns: 1fr; gap: 32px; }
+    .parcelamento-banner { padding: 48px 24px; }
+    .contato-grid { grid-template-columns: 1fr; }
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Sonata <span>Colchões</span></div>
+  <ul>
+    <li><a href="#produtos">Produtos</a></li>
+    <li><a href="#diferenciais">Sobre</a></li>
+    <li><a href="#contato">Contato</a></li>
+    <li><a href="https://wa.me/559800000000" class="nav-cta">Pedir orçamento</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">Desde 2010 em São Luís</div>
+    <h1>O sono que você <em>merece</em>, pelo preço que cabe no seu bolso</h1>
+    <p>Colchões de qualidade premium, feitos sob encomenda e entregues na sua porta. Você paga só na entrega — sem risco, sem complicação.</p>
+    <div class="hero-buttons">
+      <a href="#produtos" class="btn-primary">Ver colchões →</a>
+      <a href="#contato" class="btn-secondary">Falar no WhatsApp</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-image-inner">
+      <img src="hero-colchao.jpg" alt="Colchão de qualidade" class="hero-img">
+      <div class="hero-img-overlay"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-number">✓</span>
+    <span class="stat-label">Pague na entrega</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-number">10x</span>
+    <span class="stat-label">Sem juros no cartão</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-number">5</span>
+    <span class="stat-label">Modelos disponíveis</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-number">🚚</span>
+    <span class="stat-label">Entrega em São Luís</span>
+  </div>
+</div>
+
+<!-- PRODUTOS -->
+<section id="produtos">
+  <div class="produtos-header fade-in">
+    <div>
+      <div class="section-label">Nosso catálogo</div>
+      <h2 class="section-title">Colchões de Casal</h2>
+      <p class="section-subtitle">Todos os preços são à vista. Parcelamos em até 10x no cartão sem juros.</p>
+    </div>
+  </div>
+
+  <div class="produtos-grid">
+
+    <div class="produto-card fade-in">
+      <span class="produto-icon">💤</span>
+      <h3 class="produto-nome">Ortopédico</h3>
+      <p class="produto-desc">Suporte firme e alinhamento ideal para a coluna. Ideal para quem busca saúde no descanso.</p>
+      <div class="produto-precos">
+        <div class="preco-label">À vista</div>
+        <div class="preco-vista">R$ 400</div>
+        <div class="preco-parcelado">ou 10x de R$ 40,00</div>
+      </div>
+      <a href="https://wa.me/559800000000?text=Tenho%20interesse%20no%20colch%C3%A3o%20Ortop%C3%A9dico" class="btn-produto">Tenho interesse →</a>
+    </div>
+
+    <div class="produto-card fade-in">
+      <span class="produto-icon">😴</span>
+      <h3 class="produto-nome">Comfort</h3>
+      <p class="produto-desc">Equilíbrio entre maciez e sustentação. Para noites confortáveis e um despertar revigorado.</p>
+      <div class="produto-precos">
+        <div class="preco-label">À vista</div>
+        <div class="preco-vista">R$ 450</div>
+        <div class="preco-parcelado">ou 10x de R$ 45,00</div>
+      </div>
+      <a href="https://wa.me/559800000000?text=Tenho%20interesse%20no%20colch%C3%A3o%20Comfort" class="btn-produto">Tenho interesse →</a>
+    </div>
+
+    <div class="produto-card fade-in">
+      <span class="badge-popular">⭐ Mais vendido</span>
+      <span class="produto-icon">🌟</span>
+      <h3 class="produto-nome">Extra Comfort</h3>
+      <p class="produto-desc">O queridinho da loja. Maciez extra com espuma de alta densidade. Qualidade superior.</p>
+      <div class="produto-precos">
+        <div class="preco-label">À vista</div>
+        <div class="preco-vista">R$ 500</div>
+        <div class="preco-parcelado">ou 10x de R$ 50,00</div>
+      </div>
+      <a href="https://wa.me/559800000000?text=Tenho%20interesse%20no%20colch%C3%A3o%20Extra%20Comfort" class="btn-produto">Tenho interesse →</a>
+    </div>
+
+    <div class="produto-card fade-in">
+      <span class="produto-icon">🔄</span>
+      <h3 class="produto-nome">Molas Bonnel</h3>
+      <p class="produto-desc">Sistema de molas interligadas para suporte firme e durabilidade. Tecnologia comprovada.</p>
+      <div class="produto-precos">
+        <div class="preco-label">À vista</div>
+        <div class="preco-vista">R$ 650</div>
+        <div class="preco-parcelado">ou 10x de R$ 65,00</div>
+      </div>
+      <a href="https://wa.me/559800000000?text=Tenho%20interesse%20no%20colch%C3%A3o%20Molas%20Bonnel" class="btn-produto">Tenho interesse →</a>
+    </div>
+
+    <div class="produto-card fade-in">
+      <span class="badge-popular">✨ Premium</span>
+      <span class="produto-icon">👑</span>
+      <h3 class="produto-nome">Molas Ensacadas</h3>
+      <p class="produto-desc">Cada mola age de forma independente, eliminando transferência de movimento. O melhor da linha.</p>
+      <div class="produto-precos">
+        <div class="preco-label">À vista</div>
+        <div class="preco-vista">R$ 750</div>
+        <div class="preco-parcelado">ou 10x de R$ 75,00</div>
+      </div>
+      <a href="https://wa.me/559800000000?text=Tenho%20interesse%20no%20colch%C3%A3o%20Molas%20Ensacadas" class="btn-produto">Tenho interesse →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- PARCELAMENTO BANNER -->
+<div class="parcelamento-banner">
+  <div class="parcelamento-text">
+    <h2>Parcele em até <em>10x</em><br>sem juros no cartão</h2>
+    <p>Não deixe o sono de qualidade para depois. Nossos colchões cabem no seu bolso do jeito que precisar. À vista, no débito ou parcelado.</p>
+  </div>
+  <div class="parcelamento-cta">
+    <a href="https://wa.me/559800000000" class="btn-primary">📲 Consultar condições</a>
+    <small>Entrega em São Luís e região</small>
+  </div>
+</div>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="section-label fade-in">Por que nos escolher</div>
+  <h2 class="section-title fade-in">Muito além do colchão</h2>
+  <p class="section-subtitle fade-in">Qualidade, atendimento e garantia real. É isso que entregamos junto com cada produto.</p>
+
+  <div class="diferenciais-grid">
+    <div class="diferencial-item fade-in">
+      <div class="diferencial-icon">🛡️</div>
+      <h3 class="diferencial-titulo">Garantia real</h3>
+      <p class="diferencial-texto">Todos os nossos colchões vêm com garantia de fábrica. Você compra com segurança e tranquilidade.</p>
+    </div>
+    <div class="diferencial-item fade-in">
+      <div class="diferencial-icon">🚚</div>
+      <h3 class="diferencial-titulo">Entrega em 24h</h3>
+      <p class="diferencial-texto">Comprou hoje, dorme melhor amanhã. Entregamos em São Luís e região com rapidez e cuidado.</p>
+    </div>
+    <div class="diferencial-item fade-in">
+      <div class="diferencial-icon">💬</div>
+      <h3 class="diferencial-titulo">Atendimento humano</h3>
+      <p class="diferencial-texto">Nosso time te ajuda a escolher o colchão certo pro seu corpo e bolso. Sem pressão, sem empurrão.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="contato-grid">
+    <div>
+      <div class="section-label fade-in">Fale conosco</div>
+      <h2 class="section-title fade-in">Pronto para dormir <em style="font-style:italic;color:var(--gold)">melhor</em>?</h2>
+      <p class="section-subtitle fade-in">Entre em contato agora e receba atendimento personalizado. Tiramos todas as suas dúvidas antes de qualquer decisão.</p>
+
+      <div class="contato-info">
+        <div class="contato-item fade-in">
+          <div class="contato-item-icon">📍</div>
+          <div class="contato-item-text">
+            <h4>Endereço</h4>
+            <p>Rua Exemplo, 123 — São Luís, MA</p>
+          </div>
+        </div>
+        <div class="contato-item fade-in">
+          <div class="contato-item-icon">🕐</div>
+          <div class="contato-item-text">
+            <h4>Horário</h4>
+            <p>Seg a Sex: 8h às 18h<br>Sábado: 8h às 13h</p>
+          </div>
+        </div>
+        <a href="https://wa.me/559800000000" class="whatsapp-btn fade-in">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chamar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="contato-visual fade-in">
+      <div class="big-emoji">🚚</div>
+      <h3>Entregamos na sua porta</h3>
+      <p>Escolha o modelo pelo WhatsApp, fazemos sob encomenda e entregamos em São Luís e região. Você paga só na entrega.</p>
+      <a href="https://wa.me/559800000000?text=Quero%20fazer%20um%20pedido%20de%20colch%C3%A3o" class="btn-primary" style="margin-top:8px">Fazer meu pedido →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Sonata <span>Colchões</span></div>
+  <p>© 2025 Sonata Colchões. Todos os direitos reservados.</p>
+  <p style="font-size:0.75rem; color:#555">Site criado por WP Studio IA</p>
+</footer>
+
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
